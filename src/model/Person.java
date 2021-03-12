@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * @author Snipe - iwertz
@@ -36,6 +36,12 @@ public class Person {
 	public Person(int personID) {
 		super();
 		PersonID = personID;
+	}
+	
+	public Person(String firstName, String lastName, Date dob) {
+		FirstName = firstName;
+		LastName = lastName;
+		DateOfBirth = dob;
 	}
 	public int getPersonID() {
 		return PersonID;

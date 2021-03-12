@@ -15,7 +15,7 @@ import model.Person;
  */
 public class PersonHelper {
 	static EntityManagerFactory emfactory = 
-			Persistence.createEntityManagerFactory("MiniAddressBook2");
+			Persistence.createEntityManagerFactory("MiniAddressBook");
 	
 	public void insertPerson(Person p) {
 		EntityManager em = emfactory.createEntityManager();
@@ -28,5 +28,9 @@ public class PersonHelper {
 		EntityManager em = emfactory.createEntityManager();
 		List<Person> allPersons = em.createQuery("SELECT p FROM Person p").getResultList();
 		return allPersons;
+	}
+	
+	public void cleanUp(){
+		emfactory.close();
 	}
 }

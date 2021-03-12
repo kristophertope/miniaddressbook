@@ -29,6 +29,7 @@ public class StartProgram {
 		DateFormat formatter = new SimpleDateFormat("mm/dd/yyyy");
 		Date dob = formatter.parse(dobIn);
 		Person toAdd = new Person(fname, lname, dob);
+		ph.insertPerson(toAdd);
 	}
 	
 	private static void editPerson() {

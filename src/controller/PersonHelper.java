@@ -29,4 +29,8 @@ public class PersonHelper {
 		List<Person> allPersons = em.createQuery("SELECT p FROM Person p").getResultList();
 		return allPersons;
 	}
+	
+	public void cleanUp(){
+		emfactory.close();
+	}
 }

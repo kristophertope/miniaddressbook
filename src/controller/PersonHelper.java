@@ -15,7 +15,7 @@ import model.Person;
  */
 public class PersonHelper {
 	static EntityManagerFactory emfactory = 
-			Persistence.createEntityManagerFactory("MiniAddressBook2");
+			Persistence.createEntityManagerFactory("MiniAddressBook");
 	
 	public void insertPerson(Person p) {
 		EntityManager em = emfactory.createEntityManager();

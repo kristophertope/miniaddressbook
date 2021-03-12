@@ -16,7 +16,7 @@ import java.util.Date;
  * Mar 9, 2021
  */
 @Entity
-@Table(name="Person")
+@Table(name="Persons")
 public class Person {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -27,8 +27,8 @@ public class Person {
 	@Column(name="LastName")
 	String LastName;
 	@Column(name="DateOfBirth")
-	Date DateOfBirth;
-	
+    java.sql.Date DateOfBirth; 
+
 	public Person() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -38,7 +38,7 @@ public class Person {
 		PersonID = personID;
 	}
 	
-	public Person(String firstName, String lastName, Date dob) {
+	public Person(String firstName, String lastName, java.sql.Date dob) {
 		FirstName = firstName;
 		LastName = lastName;
 		DateOfBirth = dob;
@@ -61,10 +61,10 @@ public class Person {
 	public void setLastName(String lastName) {
 		LastName = lastName;
 	}
-	public Date getDateOfBirth() {
+	public java.sql.Date getDateOfBirth() {
 		return DateOfBirth;
 	}
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(java.sql.Date dateOfBirth) {
 		DateOfBirth = dateOfBirth;
 	}
 	@Override

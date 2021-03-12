@@ -27,7 +27,8 @@ public class StartProgram {
 		System.out.println("Enter date of birth: ");
 		String dobIn = in.next();
 		DateFormat formatter = new SimpleDateFormat("mm/dd/yyyy");
-		Date dob = formatter.parse(dobIn);
+		Date utilDob = formatter.parse(dobIn);
+		java.sql.Date dob = new java.sql.Date(utilDob.getTime());
 		Person toAdd = new Person(fname, lname, dob);
 		ph.insertPerson(toAdd);
 	}

@@ -43,6 +43,12 @@ public class Person {
 		LastName = lastName;
 		DateOfBirth = dob;
 	}
+	
+	public Person(String firstName, String lastName) {
+		FirstName = firstName;
+		LastName = lastName;
+	}
+	
 	public int getPersonID() {
 		return PersonID;
 	}

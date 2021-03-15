@@ -58,6 +58,16 @@ public class CarHelper {
 		em.close();
 	}
 	
+	public void updateCar(Car toEdit) {
+		// TODO Auto-generated method stub
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		
+		em.merge(toEdit);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
 	public Car searchForCarById(int idToEdit) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();

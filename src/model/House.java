@@ -30,12 +30,23 @@ public class House {
 	String Address;
 	@ManyToOne
 	@JoinColumn(name="PersonID")
-	private Person person;
+	public Person person;
 	
 	public House() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public House(double price, int yearOfCreation, String address, Person person) {
+		super();
+		Price = price;
+		YearOfCreation = yearOfCreation;
+		Address = address;
+		this.person = person;
+	}
+
+
+
 	public House(int houseID) {
 		super();
 		HouseID = houseID;

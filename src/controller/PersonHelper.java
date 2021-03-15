@@ -51,6 +51,16 @@ public class PersonHelper {
 		em.close();
 	}
 	
+	public void updatePerson(Person toEdit) {
+		// TODO Auto-generated method stub
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		
+		em.merge(toEdit);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
 	public Person searchForPersonById(int idToEdit) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();

@@ -32,7 +32,7 @@ public class Car {
 	int YearOfCreation;
 	@ManyToOne
 	@JoinColumn(name="PersonID")
-	private Person person;
+	public Person person;
 	
 	
 	
@@ -41,6 +41,15 @@ public class Car {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public Car(String make, String model, double price, int yearOfCreation, Person person) {
+		super();
+		Make = make;
+		Model = model;
+		Price = price;
+		YearOfCreation = yearOfCreation;
+		this.person = person;
+	}
+
 	public Car(int carID) {
 		super();
 		CarID = carID;

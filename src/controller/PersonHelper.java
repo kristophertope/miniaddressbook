@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 import model.Person;
 
@@ -30,7 +31,36 @@ public class PersonHelper {
 		return allPersons;
 	}
 	
+	public void deletePerson(Person personToDelete) {
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		TypedQuery<Person> typedQuery = em.createQuery("select p from Person p where p.FirstName = :selectedFirstName and p.LastName = :selectedLastName", Person.class);
+		//Substitute parameter with actual data from the toDelete item
+		typedQuery.setParameter("selectedFirstName", personToDelete.getFirstName());
+		typedQuery.setParameter("selectedLastName", personToDelete.getLastName());
+
+		//we only want one result
+		typedQuery.setMaxResults(1);
+
+		//get the result and save it into a new list item
+		Person result = typedQuery.getSingleResult();
+
+		//remove it
+		em.remove(result);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	public Person searchForPersonById(int idToEdit) {
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		Person found = em.find(Person.class, idToEdit);
+		em.close();
+		return found;
+	}
+	
 	public void cleanUp(){
 		emfactory.close();
 	}
+	
 }

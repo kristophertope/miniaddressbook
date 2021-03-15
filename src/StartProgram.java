@@ -39,7 +39,7 @@ public class StartProgram {
 		System.out.println("Enter year of creation: ");
 		int year = in.nextInt();
 		System.out.println("Enter address: ");
-		String address = in.next();
+		String address = in.nextLine();
 
 		House toAdd = new House(price, year, address, person);
 		hh.insertHouse(toAdd);

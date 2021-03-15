@@ -30,6 +30,7 @@ public class ViewAllPersonsServlet extends HttpServlet {
 		PersonHelper ph = new PersonHelper();
 		request.setAttribute("allPersons", ph.showAllPersons());
 		String path = "/contact-list.jsp";
+		
 		if(ph.showAllPersons().isEmpty()) {
 			path = "/index.html";
 		}

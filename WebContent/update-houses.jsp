@@ -4,8 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Update Houses</title>
+	<meta charset="UTF-8">
+	<title>Update Houses</title>
+	<link rel="stylesheet" type="text/css" href="ministyle.css">
 </head>
 <body>
 

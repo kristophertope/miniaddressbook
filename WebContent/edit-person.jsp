@@ -4,23 +4,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Edit Contact</title>
+	<meta charset="UTF-8">
+	<title>Edit Contact</title>
+	<link rel="stylesheet" type="text/css" href="ministyle.css">
 </head>
 <body>
 
 	<h1>Edit Contact</h1>
 
 	<form action = "editPersonServlet" method="post">
-		First Name: <input type ="text" name = "FirstName" value= "${personToEdit.FirstName}">
-		Last Name: <input type = "text" name = "LastName" value= "${personToEdit.LastName}"> 
-		Date of Birth: <input type = "text" name = "DateOfBirth" value= "${personToEdit.DateOfBirth}">
-		<input type = "hidden" name = "id" value="${personToEdit.PersonID}">
+		First Name: <input type ="text" name = "FirstName" value= "${personToEdit.firstName}">
+		Last Name: <input type = "text" name = "LastName" value= "${personToEdit.lastName}"> 
+		Date of Birth: <input type = "text" name = "DateOfBirth" value= "${personToEdit.dateOfBirth}">
+		<input type = "hidden" name = "id" value="${personToEdit.personID}">
 		<input type = "submit" value="Save Edited Item">
 	</form>
 
-	<a href = "editHousesServlet">Edit Houses</a>
-	<a href = "editCarsServlet">Edit Cars</a>
+	<a href = "editHouseServlet">Edit Houses</a>
+	<a href = "editCarServlet">Edit Cars</a>
 
 </body>
 </html>

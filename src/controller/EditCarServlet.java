@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Car;
+import model.House;
+
 /**
  * Servlet implementation class EditCarServlet
  */
@@ -27,7 +30,23 @@ public class EditCarServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		CarHelper ch = new CarHelper();
+		
+		int carID = Integer.parseInt(request.getParameter("CarID"));
+		String make = request.getParameter("Make");	
+		String model = request.getParameter("Model");	
+		double price = Double.parseDouble(request.getParameter("Price")); 
+		int year = Integer.parseInt(request.getParameter("YearOfCreation"));	
+		
+		Car carToUpdate = ch.searchForCarById(carID);
+		carToUpdate.setMake(make);
+		carToUpdate.setModel(model);
+		carToUpdate.setPrice(price);
+		carToUpdate.setYearOfCreation(year);
+		
+		ch.updateCar(carToUpdate);
+		
+		getServletContext().getRequestDispatcher("/viewAllPersonsServlet").forward(request, response);
 	}
 
 	/**

@@ -56,6 +56,16 @@ public class HouseHelper {
 		em.close();
 	}
 	
+	public void updateHouse(House toEdit) {
+		// TODO Auto-generated method stub
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		
+		em.merge(toEdit);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
 	public House searchForHouseById(int idToEdit) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();

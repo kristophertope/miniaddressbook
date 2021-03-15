@@ -12,7 +12,7 @@
 
 	<form method = "post" action = "navigationServlet">
 		<table>
-			<c:forEach items="${requestScope.allPeople}" var="currentperson"> 
+			<c:forEach items="${requestScope.allPersons}" var="currentperson"> 
 				<tr>
 				<td><input type="radio" name="id" value="${currentperson.PersonID}"></td> 
 				<td>${currentperson.FirstName}</td>

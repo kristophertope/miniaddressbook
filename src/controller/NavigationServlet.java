@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Person;
 
 /**
  * Servlet implementation class NavigationServlet
@@ -35,7 +36,33 @@ public class NavigationServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		PersonHelper ph = new PersonHelper();
+		String act = request.getParameter("doThisToPerson");
+		String path = "viewAllPersonsServlet";
+		
+		if (act.equals("delete")) {
+			try {
+				Integer tempId = Integer.parseInt(request.getParameter("id")); 
+				Person personToDelete = ph.searchForPersonById(tempId); 
+				ph.deletePerson(personToDelete);
+			} catch (NumberFormatException e) { 
+				System.out.println("Forgot to select an item");
+			}
+		} else if (act.equals("edit")) {
+			
+			try {
+				Integer tempId = Integer.parseInt(request.getParameter("id"));
+				Person personToEdit = ph.searchForPersonById(tempId);
+				request.setAttribute("itemToEdit", personToEdit);
+				path = "/edit-person.jsp";
+			} catch (NumberFormatException e) {
+				System.out.println("forgot to select an item");
+			}
+		} else if (act.equals("add")) {
+			path = "/index.html";
+		}
+		
+		getServletContext().getRequestDispatcher(path).forward(request, response);
 	}
 
 }

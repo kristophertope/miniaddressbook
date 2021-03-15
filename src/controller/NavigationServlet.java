@@ -38,7 +38,7 @@ public class NavigationServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		PersonHelper ph = new PersonHelper();
 		String act = request.getParameter("doThisToPerson");
-		String path = "viewAllPersonsServlet";
+		String path = "/viewAllPersonsServlet";
 		
 		if (act.equals("delete")) {
 			try {
@@ -53,10 +53,10 @@ public class NavigationServlet extends HttpServlet {
 			try {
 				Integer tempId = Integer.parseInt(request.getParameter("id"));
 				Person personToEdit = ph.searchForPersonById(tempId);
-				request.setAttribute("itemToEdit", personToEdit);
+				request.setAttribute("personToEdit", personToEdit);
 				path = "/edit-person.jsp";
 			} catch (NumberFormatException e) {
-				System.out.println("forgot to select an item");
+				System.out.println("forgot to select a person");
 			}
 		} else if (act.equals("add")) {
 			path = "/index.html";

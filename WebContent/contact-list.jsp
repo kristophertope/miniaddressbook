@@ -14,10 +14,10 @@
 		<table>
 			<c:forEach items="${requestScope.allPersons}" var="currentperson"> 
 				<tr>
-				<td><input type="radio" name="id" value="${currentperson.PersonID}"></td> 
-				<td>${currentperson.FirstName}</td>
-				<td>${currentperson.LastName}</td>
-				<td>${currentperson.DateOfBirth}</td>
+				<td><input type="radio" name="id" value="${currentperson.personID}"></td> 
+				<td>${currentperson.firstName}</td>
+				<td>${currentperson.lastName}</td>
+				<td>${currentperson.dateOfBirth}</td>
 				</tr>
 			</c:forEach> 
 		</table>

@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,19 +11,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.House;
 import model.Person;
 
 /**
- * Servlet implementation class AddPersonServlet
+ * Servlet implementation class AddHouseServlet
  */
-@WebServlet("/addPersonServlet")
-public class AddPersonServlet extends HttpServlet {
+@WebServlet("/AddHouseServlet")
+public class AddHouseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddPersonServlet() {
+    public AddHouseServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,25 +34,19 @@ public class AddPersonServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String fname = request.getParameter("FirstName"); 
-		String lname = request.getParameter("LastName");
-		String dobIn = request.getParameter("DateOfBirth");	
+		double price = Double.parseDouble(request.getParameter("Price"));
+		int year = Integer.parseInt(request.getParameter("YearOfCreation"));
+		String address = request.getParameter("Address");
+		int PersonID = Integer.parseInt(request.getParameter("PersonID"));	
 		
-		DateFormat formatter = new SimpleDateFormat("mm/dd/yyyy");
-		java.util.Date utilDob = null;
-		try {
-			utilDob = formatter.parse(dobIn);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		java.sql.Date dob = new java.sql.Date(utilDob.getTime());
-		
-		Person p = new Person(fname, lname, dob);
 		PersonHelper ph = new PersonHelper();
-		ph.insertPerson(p);
+		Person person = ph.searchForPersonById(PersonID);
 		
-		getServletContext().getRequestDispatcher("/index.html").forward(request, response);
+		HouseHelper hh = new HouseHelper();
+		House h = new House(price, year, address, person);
+		hh.insertHouse(h);
+		
+		getServletContext().getRequestDispatcher("/edit-person.html").forward(request, response);
 		
 	}
 

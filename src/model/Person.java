@@ -1,14 +1,19 @@
 package model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Snipe - iwertz
@@ -21,14 +26,36 @@ public class Person {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="PersonID")
-	int PersonID;
+	public int PersonID;
 	@Column(name="FirstName")
 	String FirstName;
 	@Column(name="LastName")
 	String LastName;
 	@Column(name="DateOfBirth")
-    java.sql.Date DateOfBirth; 
+    java.sql.Date DateOfBirth;
+	
+	@OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
+	@JoinTable
+	 (
+	 name="Houses",
+	 joinColumns={ @JoinColumn(name="PersonID", 
+	referencedColumnName="PersonID") },
+	 inverseJoinColumns={ @JoinColumn(name="HouseID", 
+	referencedColumnName="HouseID", unique=true) }
+	 )
+	private List<House> ListOfHouses;
 
+	@OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
+	@JoinTable
+	 (
+	 name="Cars",
+	 joinColumns={ @JoinColumn(name="PersonID", 
+	referencedColumnName="PersonID") },
+	 inverseJoinColumns={ @JoinColumn(name="CarID", 
+	referencedColumnName="CarID", unique=true) }
+	 )
+	private List<Car> ListOfCars;
+	
 	public Person() {
 		super();
 		// TODO Auto-generated constructor stub

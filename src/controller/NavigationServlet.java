@@ -73,7 +73,7 @@ public class NavigationServlet extends HttpServlet {
 					Integer tempId = Integer.parseInt(request.getParameter("id"));
 					Person personToEdit = ph.searchForPersonById(tempId);
 					request.setAttribute("personToEdit", personToEdit);
-					path = "/house-list.jsp";
+					path = "/viewAllHousesServlet";
 				} catch (NumberFormatException e) {
 					System.out.println("forgot to select a person");
 				}
@@ -82,7 +82,7 @@ public class NavigationServlet extends HttpServlet {
 					Integer tempId = Integer.parseInt(request.getParameter("id"));
 					Person personToEdit = ph.searchForPersonById(tempId);
 					request.setAttribute("personToEdit", personToEdit);
-					path = "/car-list.jsp";
+					path = "/viewAllCarsServlet";
 				} catch (NumberFormatException e) {
 					System.out.println("forgot to select a person");
 				}

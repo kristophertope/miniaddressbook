@@ -32,7 +32,7 @@ public class EditCarServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		CarHelper ch = new CarHelper();
 		
-		int carID = Integer.parseInt(request.getParameter("CarID"));
+		int carID = Integer.parseInt(request.getParameter("id"));
 		String make = request.getParameter("Make");	
 		String model = request.getParameter("Model");	
 		double price = Double.parseDouble(request.getParameter("Price")); 

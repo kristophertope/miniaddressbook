@@ -36,7 +36,7 @@ public class EditHouseServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		HouseHelper hh = new HouseHelper();
 		
-		int houseID = Integer.parseInt(request.getParameter("HouseID"));
+		int houseID = Integer.parseInt(request.getParameter("id"));
 		double price = Double.parseDouble(request.getParameter("Price")); 
 		int year = Integer.parseInt(request.getParameter("YearOfCreation"));
 		String address = request.getParameter("Address");	

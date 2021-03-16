@@ -117,6 +117,13 @@ public class NavigationServlet extends HttpServlet {
 		}
 		
 		if (actHouse != null) {
+			try {
+				Integer tempId = Integer.parseInt(request.getParameter("id"));
+				Person personToEdit = ph.searchForPersonById(tempId);
+				request.setAttribute("personToEdit", personToEdit);
+			} catch (NumberFormatException e) {
+				System.out.println("forgot to select a person");
+			}
 			if (actHouse.equals("delete")) {
 				try {
 					path = "/ViewAllHousesServlet";

@@ -16,16 +16,16 @@
 		<table>
 			<c:forEach items="${requestScope.allCars}" var="currentcar"> 
 				<tr>
-				<td><input type="radio" name="id" value="${currentcar.houseID}"></td> 
+				<td><input type="radio" name="id" value="${currentcar.carID}"></td> 
 				<td>${currentcar.price}</td>
 				<td>${currentcar.yearOfCreation}</td>
 				<td>${currentcar.address}</td>
 				</tr>
 			</c:forEach> 
 		</table>
-		<input type = "submit" value = "edit" name="doThisToHouse"> 
-		<input type = "submit" value = "delete" name="doThisToHouse"> 
-		<input type = "submit" value = "add" name = "doThisToHouse">
+		<input type = "submit" value = "edit" name="doThisToCar"> 
+		<input type = "submit" value = "delete" name="doThisToCar"> 
+		<input type = "submit" value = "add" name = "doThisToCar">
 	</form>
 
 </body>

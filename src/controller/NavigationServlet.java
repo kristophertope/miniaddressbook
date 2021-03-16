@@ -47,27 +47,49 @@ public class NavigationServlet extends HttpServlet {
 		String actHouse = request.getParameter("doThisToHouse");
 		String path = "/viewAllPersonsServlet";
 		
-		if (act.equals("delete")) {
-			try {
-				Integer tempId = Integer.parseInt(request.getParameter("id")); 
-				Person personToDelete = ph.searchForPersonById(tempId); 
-				ph.deletePerson(personToDelete);
-			} catch (NumberFormatException e) { 
-				System.out.println("Forgot to select an item");
+		if (act != null) {
+			if (act.equals("delete")) {
+				try {
+					Integer tempId = Integer.parseInt(request.getParameter("id")); 
+					Person personToDelete = ph.searchForPersonById(tempId); 
+					ph.deletePerson(personToDelete);
+				} catch (NumberFormatException e) { 
+					System.out.println("Forgot to select an item");
+				}
+			} else if (act.equals("edit")) {
+				
+				try {
+					Integer tempId = Integer.parseInt(request.getParameter("id"));
+					Person personToEdit = ph.searchForPersonById(tempId);
+					request.setAttribute("personToEdit", personToEdit);
+					path = "/edit-person.jsp";
+				} catch (NumberFormatException e) {
+					System.out.println("forgot to select a person");
+				}
+			} else if (act.equals("add")) {
+				path = "/index.html";
+			} else if (act.equals("view houses")) {
+				try {
+					Integer tempId = Integer.parseInt(request.getParameter("id"));
+					Person personToEdit = ph.searchForPersonById(tempId);
+					request.setAttribute("personToEdit", personToEdit);
+					path = "/house-list.jsp";
+				} catch (NumberFormatException e) {
+					System.out.println("forgot to select a person");
+				}
+			} else if (act.equals("view cars")) {
+				try {
+					Integer tempId = Integer.parseInt(request.getParameter("id"));
+					Person personToEdit = ph.searchForPersonById(tempId);
+					request.setAttribute("personToEdit", personToEdit);
+					path = "/car-list.jsp";
+				} catch (NumberFormatException e) {
+					System.out.println("forgot to select a person");
+				}
 			}
-		} else if (act.equals("edit")) {
-			
-			try {
-				Integer tempId = Integer.parseInt(request.getParameter("id"));
-				Person personToEdit = ph.searchForPersonById(tempId);
-				request.setAttribute("personToEdit", personToEdit);
-				path = "/edit-person.jsp";
-			} catch (NumberFormatException e) {
-				System.out.println("forgot to select a person");
-			}
-		} else if (act.equals("add")) {
-			path = "/index.html";
 		}
+		
+		
 		
 		if (actCar != null) {
 			if (actCar.equals("delete")) {

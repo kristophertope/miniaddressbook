@@ -10,6 +10,8 @@
 </head>
 <body>
 
+	<h1>Contacts List</h1>
+
 	<form method = "post" action = "navigationServlet">
 		<table>
 			<c:forEach items="${requestScope.allPersons}" var="currentperson"> 
@@ -23,7 +25,9 @@
 		</table>
 		<input type = "submit" value = "edit" name="doThisToPerson"> 
 		<input type = "submit" value = "delete" name="doThisToPerson"> 
-		<input type="submit" value = "add" name = "doThisToPerson">
+		<input type = "submit" value = "add" name = "doThisToPerson">
+		<input type = "submit" value = "view houses" name = "doThisToPerson">
+		<input type = "submit" value = "view cars" name = "doThisToPerson">
 	</form>
 
 </body>

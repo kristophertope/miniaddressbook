@@ -10,14 +10,25 @@
 </head>
 <body>
 
-	<h1>Update Cars</h1>
+	<h1>Update Houses</h1>
 
-	<form action = "addHouseServlet" method="post"> 
-		Price: <input type ="text" name = "price"> <br>
-		Year Built: <input type = "text" name = "yearOfCreation"><br>
-		Address: <input type = "text" name = "address"><br>
-		<input type = "submit" value="Add House"> 
+	<form method = "post" action = "navigationServlet">
+		<table>
+			<c:forEach items="${requestScope.allHouses}" var="currenthouse"> 
+				<tr>
+					<td><input type="radio" name="id" value="${currenthouse.houseID}"></td> 
+					<td>${currenthouse.price}</td>
+					<td>${currenthouse.yearOfCreation}</td>
+					<td>${currenthouse.address}</td>
+				</tr>
+			</c:forEach> 
+		</table>
+		<input type = "submit" value = "edit" name="doThisToHouse"> 
+		<input type = "submit" value = "delete" name="doThisToHouse"> 
+		<input type="submit" value = "add" name = "doThisToHouse">
 	</form>
+	
+	<a href = "/index.html">Back to Home</a>
 
 </body>
 </html>

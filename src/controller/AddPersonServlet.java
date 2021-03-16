@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -38,7 +37,7 @@ public class AddPersonServlet extends HttpServlet {
 		String lname = request.getParameter("LastName");
 		String dobIn = request.getParameter("DateOfBirth");	
 		
-		DateFormat formatter = new SimpleDateFormat("mm/dd/yyyy");
+		DateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
 		java.util.Date utilDob = null;
 		try {
 			utilDob = formatter.parse(dobIn);

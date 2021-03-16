@@ -16,7 +16,7 @@ import model.Person;
 /**
  * Servlet implementation class EditPersonServlet
  */
-@WebServlet("/EditPersonServlet")
+@WebServlet("/editPersonServlet")
 public class EditPersonServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -35,12 +35,12 @@ public class EditPersonServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		PersonHelper ph = new PersonHelper();
 		
-		int personID = Integer.parseInt(request.getParameter("PersonID"));
+		int personID = Integer.parseInt(request.getParameter("id"));
 		String fname = request.getParameter("FirstName"); 
 		String lname = request.getParameter("LastName");
 		String dobIn = request.getParameter("DateOfBirth");	
 		
-		DateFormat formatter = new SimpleDateFormat("mm/dd/yyyy");
+		DateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
 		java.util.Date utilDob = null;
 		try {
 			utilDob = formatter.parse(dobIn);
@@ -48,6 +48,7 @@ public class EditPersonServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println(utilDob);
 		java.sql.Date dob = new java.sql.Date(utilDob.getTime());
 		
 		Person personToUpdate = ph.searchForPersonById(personID);

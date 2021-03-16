@@ -23,6 +23,7 @@
 				</tr>
 			</c:forEach> 
 		</table>
+		<input type = "hidden" name = "id" value = "${personToEdit.personID}">
 		<input type = "submit" value = "edit" name="doThisToHouse"> 
 		<input type = "submit" value = "delete" name="doThisToHouse"> 
 		<input type = "submit" value = "add" name = "doThisToHouse">

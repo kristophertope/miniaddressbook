@@ -46,7 +46,7 @@ public class AddHouseServlet extends HttpServlet {
 		House h = new House(price, year, address, person);
 		hh.insertHouse(h);
 		
-		getServletContext().getRequestDispatcher("/edit-person.html").forward(request, response);
+		getServletContext().getRequestDispatcher("/house-list.jsp").forward(request, response);
 		
 	}
 

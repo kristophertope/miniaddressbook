@@ -35,9 +35,9 @@ public class StartProgram {
 	
 	private static void addHouse(Person person) {
 		System.out.println("Enter price: ");
-		double price = in.nextDouble();
+		double price = Double.parseDouble(in.nextLine());
 		System.out.println("Enter year of creation: ");
-		int year = in.nextInt();
+		int year = Integer.parseInt(in.nextLine());
 		System.out.println("Enter address: ");
 		String address = in.nextLine();
 

@@ -25,24 +25,22 @@ public class ViewAllCarsServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response, String personID) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String personID = request.getParameter("id");
 		CarHelper ch = new CarHelper();
 		request.setAttribute("allCars", ch.showAllCars(personID));
-		String path = "/update-cars.jsp";
-		
-		if(ch.showAllCars(personID).isEmpty()) {
-			path = "/index.html";
-		}
+		String path = "/cars-list.jsp";
+
 		getServletContext().getRequestDispatcher(path).forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response, String personID) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response, personID);
+		doGet(request, response);
 	}
 
 }

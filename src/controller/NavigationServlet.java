@@ -70,9 +70,8 @@ public class NavigationServlet extends HttpServlet {
 				path = "/index.html";
 			} else if (act.equals("view houses")) {
 				try {
-					Integer tempId = Integer.parseInt(request.getParameter("id"));
-					Person personToEdit = ph.searchForPersonById(tempId);
-					request.setAttribute("personToEdit", personToEdit);
+					String tempId = request.getParameter("id");
+					request.setAttribute("id", tempId);
 					path = "/viewAllHousesServlet";
 				} catch (NumberFormatException e) {
 					System.out.println("forgot to select a person");
@@ -80,8 +79,7 @@ public class NavigationServlet extends HttpServlet {
 			} else if (act.equals("view cars")) {
 				try {
 					Integer tempId = Integer.parseInt(request.getParameter("id"));
-					Person personToEdit = ph.searchForPersonById(tempId);
-					request.setAttribute("personToEdit", personToEdit);
+					request.setAttribute("personID", tempId);
 					path = "/viewAllCarsServlet";
 				} catch (NumberFormatException e) {
 					System.out.println("forgot to select a person");
@@ -92,6 +90,13 @@ public class NavigationServlet extends HttpServlet {
 		
 		
 		if (actCar != null) {
+			try {
+				Integer tempId = Integer.parseInt(request.getParameter("id"));
+				Person personToEdit = ph.searchForPersonById(tempId);
+				request.setAttribute("personToEdit", personToEdit);
+			} catch (NumberFormatException e) {
+				System.out.println("forgot to select a person");
+			}
 			if (actCar.equals("delete")) {
 				try {
 					path = "/ViewAllCarsServlet";
@@ -112,6 +117,8 @@ public class NavigationServlet extends HttpServlet {
 					System.out.println("forgot to select a car");
 				}
 			} else if (actCar.equals("add")) {
+				Integer tempId = Integer.parseInt(request.getParameter("id"));
+				request.setAttribute("PersonID", tempId);
 				path = "/add-car.jsp";
 			}
 		}
@@ -121,30 +128,23 @@ public class NavigationServlet extends HttpServlet {
 				Integer tempId = Integer.parseInt(request.getParameter("id"));
 				Person personToEdit = ph.searchForPersonById(tempId);
 				request.setAttribute("personToEdit", personToEdit);
-			} catch (NumberFormatException e) {
-				System.out.println("forgot to select a person");
-			}
-			if (actHouse.equals("delete")) {
-				try {
-					path = "/ViewAllHousesServlet";
-					Integer tempId = Integer.parseInt(request.getParameter("id")); 
-					House houseToDelete = hh.searchForHouseById(tempId); 
-					hh.deleteHouse(houseToDelete);
-				} catch (NumberFormatException e) { 
-					System.out.println("Forgot to select an item");
-				}
-			} else if (actHouse.equals("edit")) {
 				
-				try {
-					Integer tempId = Integer.parseInt(request.getParameter("id"));
-					House houseToEdit = hh.searchForHouseById(tempId);
+				if (actHouse.equals("delete")) {
+					path = "/ViewAllHousesServlet";
+					Integer tempId2 = Integer.parseInt(request.getParameter("id")); 
+					House houseToDelete = hh.searchForHouseById(tempId2); 
+					hh.deleteHouse(houseToDelete);
+				} else if (actHouse.equals("edit")) {
+					Integer tempId2 = Integer.parseInt(request.getParameter("id"));
+					House houseToEdit = hh.searchForHouseById(tempId2);
 					request.setAttribute("houseToEdit", houseToEdit);
 					path = "/edit-house.jsp";
-				} catch (NumberFormatException e) {
-					System.out.println("forgot to select a car");
+				} else if (actHouse.equals("add")) {
+					request.setAttribute("id", personToEdit.PersonID);
+					path = "/add-house.jsp";
 				}
-			} else if (actHouse.equals("add")) {
-				path = "/add-house.jsp";
+			} catch (NumberFormatException e) {
+				System.out.println("forgot to select a person");
 			}
 		}
 		

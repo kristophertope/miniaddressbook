@@ -44,7 +44,7 @@ public class AddCarServlet extends HttpServlet {
 		Car c = new Car(make, model, price, year, person);
 		ch.insertCar(c);
 		
-		getServletContext().getRequestDispatcher("/edit-person.html").forward(request, response);
+		getServletContext().getRequestDispatcher("/add-car.jsp").forward(request, response);
 	}
 
 	/**

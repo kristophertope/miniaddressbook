@@ -14,7 +14,7 @@ import model.Person;
 /**
  * Servlet implementation class AddCarServlet
  */
-@WebServlet("/AddCarServlet")
+@WebServlet("/addCarServlet")
 public class AddCarServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

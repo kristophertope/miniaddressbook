@@ -33,6 +33,7 @@ public class ViewAllHousesServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String personID = request.getParameter("id");
 		HouseHelper hh = new HouseHelper();
+		request.setAttribute("idPerson", personID);
 		request.setAttribute("allHouses", hh.showAllHouses(personID));
 		String path = "/house-list.jsp";
 

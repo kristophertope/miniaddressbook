@@ -11,11 +11,12 @@
 
 	<h1>Edit Car</h1>
 
-	<form action = "editPersonServlet" method="post">
-		First Name: <input type ="text" name = "FirstName" value= "${personToEdit.firstName}">
-		Last Name: <input type = "text" name = "LastName" value= "${personToEdit.lastName}"> 
-		Date of Birth: <input type = "text" name = "DateOfBirth" value= "${personToEdit.dateOfBirth}">
-		<input type = "hidden" name = "id" value="${personToEdit.personID}">
+	<form action = "editCarServlet" method="post">
+		Make: <input type = "text" name = "Make" value= "${carToEdit.make}">
+		Model: <input type = "text" name = "Model" value= "${carToEdit.model}">
+		Price: <input type ="text" name = "Price" value= "${carToEdit.price}">
+		Model Year: <input type = "text" name = "YearOfCreation" value= "${carToEdit.yearOfCreation}"> 
+		<input type = "hidden" name = "id" value="${carToEdit.carID}">
 		<input type = "submit" value="Save Edited Item">
 	</form>
 

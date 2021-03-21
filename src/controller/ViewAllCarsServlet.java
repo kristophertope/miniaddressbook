@@ -29,8 +29,9 @@ public class ViewAllCarsServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String personID = request.getParameter("id");
 		CarHelper ch = new CarHelper();
+		request.setAttribute("idPerson", personID);
 		request.setAttribute("allCars", ch.showAllCars(personID));
-		String path = "/cars-list.jsp";
+		String path = "/car-list.jsp";
 
 		getServletContext().getRequestDispatcher(path).forward(request, response);
 	}

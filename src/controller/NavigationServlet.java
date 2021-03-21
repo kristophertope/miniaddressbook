@@ -17,7 +17,6 @@ import model.Person;
 @WebServlet("/navigationServlet")
 public class NavigationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -78,8 +77,8 @@ public class NavigationServlet extends HttpServlet {
 				}
 			} else if (act.equals("view cars")) {
 				try {
-					Integer tempId = Integer.parseInt(request.getParameter("id"));
-					request.setAttribute("personID", tempId);
+					String tempId = request.getParameter("id");
+					request.setAttribute("id", tempId);
 					path = "/viewAllCarsServlet";
 				} catch (NumberFormatException e) {
 					System.out.println("forgot to select a person");
@@ -90,61 +89,44 @@ public class NavigationServlet extends HttpServlet {
 		
 		
 		if (actCar != null) {
-			try {
-				Integer tempId = Integer.parseInt(request.getParameter("id"));
+			Integer tempId = Integer.parseInt(request.getParameter("idPerson"));
+			
+			if (actCar.equals("delete")) {
+				path = "/index.html";
+				Integer tempId2 = Integer.parseInt(request.getParameter("idCar")); 
+				Car carToDelete = ch.searchForCarById(tempId2); 
+				ch.deleteCar(carToDelete);
+			} else if (actCar.equals("edit")) {
 				Person personToEdit = ph.searchForPersonById(tempId);
 				request.setAttribute("personToEdit", personToEdit);
-			} catch (NumberFormatException e) {
-				System.out.println("forgot to select a person");
-			}
-			if (actCar.equals("delete")) {
-				try {
-					path = "/ViewAllCarsServlet";
-					Integer tempId = Integer.parseInt(request.getParameter("id")); 
-					Car carToDelete = ch.searchForCarById(tempId); 
-					ch.deleteCar(carToDelete);
-				} catch (NumberFormatException e) { 
-					System.out.println("Forgot to select an item");
-				}
-			} else if (actCar.equals("edit")) {
-				
-				try {
-					Integer tempId = Integer.parseInt(request.getParameter("id"));
-					Car carToEdit = ch.searchForCarById(tempId);
-					request.setAttribute("carToEdit", carToEdit);
-					path = "/edit-car.jsp";
-				} catch (NumberFormatException e) {
-					System.out.println("forgot to select a car");
-				}
+				Integer tempId2 = Integer.parseInt(request.getParameter("idCar"));
+				Car carToEdit = ch.searchForCarById(tempId2);
+				request.setAttribute("carToEdit", carToEdit);
+				path = "/edit-car.jsp";
 			} else if (actCar.equals("add")) {
-				Integer tempId = Integer.parseInt(request.getParameter("id"));
-				request.setAttribute("PersonID", tempId);
+				request.setAttribute("idPerson", tempId);
 				path = "/add-car.jsp";
 			}
 		}
 		
 		if (actHouse != null) {
-			try {
-				Integer tempId = Integer.parseInt(request.getParameter("id"));
+			Integer tempId = Integer.parseInt(request.getParameter("idPerson"));
+			
+			if (actHouse.equals("delete")) {
+				path = "/index.html";
+				Integer tempId2 = Integer.parseInt(request.getParameter("idHouse")); 
+				House houseToDelete = hh.searchForHouseById(tempId2); 
+				hh.deleteHouse(houseToDelete);
+			} else if (actHouse.equals("edit")) {
 				Person personToEdit = ph.searchForPersonById(tempId);
 				request.setAttribute("personToEdit", personToEdit);
-				
-				if (actHouse.equals("delete")) {
-					path = "/ViewAllHousesServlet";
-					Integer tempId2 = Integer.parseInt(request.getParameter("id")); 
-					House houseToDelete = hh.searchForHouseById(tempId2); 
-					hh.deleteHouse(houseToDelete);
-				} else if (actHouse.equals("edit")) {
-					Integer tempId2 = Integer.parseInt(request.getParameter("id"));
-					House houseToEdit = hh.searchForHouseById(tempId2);
-					request.setAttribute("houseToEdit", houseToEdit);
-					path = "/edit-house.jsp";
-				} else if (actHouse.equals("add")) {
-					request.setAttribute("id", personToEdit.PersonID);
-					path = "/add-house.jsp";
-				}
-			} catch (NumberFormatException e) {
-				System.out.println("forgot to select a person");
+				Integer tempId2 = Integer.parseInt(request.getParameter("idHouse"));
+				House houseToEdit = hh.searchForHouseById(tempId2);
+				request.setAttribute("houseToEdit", houseToEdit);
+				path = "/edit-house.jsp";
+			} else if (actHouse.equals("add")) {
+				request.setAttribute("idPerson", tempId);
+				path = "/add-house.jsp";
 			}
 		}
 		

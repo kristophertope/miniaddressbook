@@ -35,7 +35,7 @@ public class AddCarServlet extends HttpServlet {
 		String model = request.getParameter("Model");
 		double price = Double.parseDouble(request.getParameter("Price"));
 		int year = Integer.parseInt(request.getParameter("YearOfCreation"));
-		int PersonID = Integer.parseInt(request.getParameter("PersonID"));	
+		int PersonID = Integer.parseInt(request.getParameter("id"));	
 		
 		PersonHelper ph = new PersonHelper();
 		Person person = ph.searchForPersonById(PersonID);
@@ -44,7 +44,7 @@ public class AddCarServlet extends HttpServlet {
 		Car c = new Car(make, model, price, year, person);
 		ch.insertCar(c);
 		
-		getServletContext().getRequestDispatcher("/add-car.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/index.html").forward(request, response);
 	}
 
 	/**

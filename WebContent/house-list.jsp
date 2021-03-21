@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,7 @@
 			<c:forEach items="${requestScope.allHouses}" var="currenthouse"> 
 				<tr>
 				<td><input type="radio" name="idHouse" value="${currenthouse.houseID}"></td> 
-				<td>${currenthouse.price}</td>
+				<td><fmt:formatNumber value = "${currenthouse.price}" type = "currency" /></td>
 				<td>${currenthouse.yearOfCreation}</td>
 				<td>${currenthouse.address}</td>
 				</tr>

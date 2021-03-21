@@ -12,9 +12,9 @@
 	<h1>Edit House</h1>
 
 	<form action = "editHouseServlet" method="post">
-		First Name: <input type ="text" name = "Price" value= "${houseToEdit.price}">
-		Last Name: <input type = "text" name = "YearOfCreation" value= "${houseToEdit.yearOfCreation}"> 
-		Date of Birth: <input type = "text" name = "Address" value= "${houseToEdit.address}">
+		Price: <input type ="text" name = "Price" value= "${houseToEdit.price}">
+		Year of Creation: <input type = "text" name = "YearOfCreation" value= "${houseToEdit.yearOfCreation}"> 
+		Address: <input type = "text" name = "Address" value= "${houseToEdit.address}">
 		<input type = "hidden" name = "id" value="${houseToEdit.houseID}">
 		<input type = "submit" value="Save Edited Item">
 	</form>

@@ -16,18 +16,20 @@
 		<table>
 			<c:forEach items="${requestScope.allHouses}" var="currenthouse"> 
 				<tr>
-				<td><input type="radio" name="id" value="${currenthouse.houseID}"></td> 
+				<td><input type="radio" name="idHouse" value="${currenthouse.houseID}"></td> 
 				<td>${currenthouse.price}</td>
 				<td>${currenthouse.yearOfCreation}</td>
 				<td>${currenthouse.address}</td>
 				</tr>
 			</c:forEach> 
 		</table>
-		<input type = "hidden" name = "id" value = "${currenthouse.personID}">
+		<input type = "hidden" name = "idPerson" value = "${idPerson}">
 		<input type = "submit" value = "edit" name="doThisToHouse"> 
 		<input type = "submit" value = "delete" name="doThisToHouse"> 
 		<input type = "submit" value = "add" name = "doThisToHouse">
 	</form>
+
+	<a href = "index.html">Back to Home</a>
 
 </body>
 </html>

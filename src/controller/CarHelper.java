@@ -31,7 +31,7 @@ public class CarHelper {
 	public List<Car> showAllCars(String personID) {
 		int PersonID = Integer.parseInt(personID);
 		EntityManager em = emfactory.createEntityManager();
-		Query query = em.createQuery("SELECT c FROM Car c WHERE c.person.PersonID == :person");
+		Query query = em.createQuery("SELECT c FROM Car c WHERE c.person.PersonID = :person");
 	    query.setParameter("person", PersonID);
 	    List<Car> allCars = query.getResultList();
 		return allCars;

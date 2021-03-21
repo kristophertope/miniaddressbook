@@ -15,6 +15,7 @@
 		Model: <input type = "text" name = "Model"><br>
 		Price: <input type = "text" name = "Price"><br>
 		Model Year: <input type = "text" name = "YearOfCreation"><br>
+		<input type = "hidden" name = "id" value = "${idPerson}">
 		<input type = "submit" value="Add Car"> 
 	</form>
 	

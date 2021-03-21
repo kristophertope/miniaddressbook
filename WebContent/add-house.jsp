@@ -14,7 +14,7 @@
 		Price: <input type ="text" name = "Price"> <br>
 		Year Built: <input type = "text" name = "YearOfCreation"><br>
 		Address: <input type = "text" name = "Address"><br>
-		<input type = "hidden" name = "id" value = "${personID}">
+		<input type = "hidden" name = "id" value = "${idPerson}">
 		<input type = "submit" value="Add House"> 
 	</form>
 
